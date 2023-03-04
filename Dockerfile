@@ -13,7 +13,7 @@ COPY --from=dependencies /book-hotels/node_modules ./node_modules
 RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:14-alpine AS runner
+FROM node:19-alpine AS runner
 WORKDIR /book-hotels
 
 ENV NODE_ENV production
@@ -27,9 +27,5 @@ COPY --from=builder /book-hotels/package.json ./package.json
 
 USER nextjs
 EXPOSE 3000
-
-RUN node -v
-RUN npm -v
-
 
 CMD ["npm", "start"]
