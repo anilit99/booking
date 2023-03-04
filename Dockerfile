@@ -28,4 +28,8 @@ COPY --from=builder /book-hotels/package.json ./package.json
 USER nextjs
 EXPOSE 3000
 
+RUN node -v
+RUN npm -v
+
+
 CMD ["npm", "start"]
